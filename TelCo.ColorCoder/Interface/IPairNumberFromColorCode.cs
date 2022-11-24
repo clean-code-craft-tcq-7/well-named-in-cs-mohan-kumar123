@@ -2,6 +2,6 @@
 {
     public interface IPairNumberFromColorCode
     {
-        void GetPairNumberFromColor(ColorPair pair);
+        int GetPairNumberFromColor(ColorPair pair);
     }
 }

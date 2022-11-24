@@ -1,8 +1,8 @@
 ﻿namespace TelCo.ColorCoder
 {
-    public class ColorCalculationForPairNumberFromColor
+    public class ColorCalculationForPairNumberFromColor : IColorCalculationForPairNumberFromColor
     {
-        public static int GetMinorColor(ColorPair pair)
+        public int GetMinorColor(ColorPair pair)
         {
             int minorIndex = -1;
             for (int i = 0; i < ColorMap.colorMapMinor.Length; i++)
@@ -15,7 +15,7 @@
             }
             return minorIndex;
         }
-        public static int GetMajorColor(ColorPair pair)
+        public int GetMajorColor(ColorPair pair)
         {
             int majorIndex = -1;
             for (int i = 0; i < ColorMap.colorMapMajor.Length; i++)

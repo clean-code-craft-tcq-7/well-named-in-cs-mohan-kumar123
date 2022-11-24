@@ -1,6 +1,4 @@
 ﻿using System;
-using TelCo.ColorCoder.Interface;
-using TelCo.ColorCoder.UnitTestAssertion;
 
 namespace TelCo.ColorCoder
 {
@@ -8,27 +6,28 @@ namespace TelCo.ColorCoder
     {
         private ColorPair _pair;
         private int _pairNumber, minorSize;
+        EvaluateColor evaluateColor = new EvaluateColor();
         public ColorProcessor(ColorPair pair = null, int pairNumber = 0)
         {
             _pair = pair;
             _pairNumber = pairNumber;
         }
-        public void GetPairNumberFromColorProcessor()
+        public int GetPairNumberFromColorProcessor()
         {
-            int majorIndex = ColorCalculationForPairNumberFromColor.GetMajorColor(_pair);
-            int minorIndex = ColorCalculationForPairNumberFromColor.GetMinorColor(_pair);
-            int result = EvaluateColor.EvaluateColorPairNumber(_pair, majorIndex, minorIndex);
+            ColorCalculationForPairNumberFromColor colorCalculationForPairNumberFromColor = new ColorCalculationForPairNumberFromColor();
+            int majorIndex = colorCalculationForPairNumberFromColor.GetMajorColor(_pair);
+            int minorIndex = colorCalculationForPairNumberFromColor.GetMinorColor(_pair);
+            int result = evaluateColor.EvaluateColorPairNumber(_pair, majorIndex, minorIndex);
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", _pair, result);
-            IUnitTestForColor unitTestForColor = new PairNumberFromColorAssertion(_pair, result);
-            unitTestForColor.AssertionCheck();
+            return result;
         }
-        public void GetColorFromPairNumberProcessor()
+        public ColorPair GetColorFromPairNumberProcessor()
         {
-            minorSize = EvaluateColor.EvaluateIsValidPairNumber(_pairNumber);
-            ColorPair colorPair = ColorCalculationForColorFromPairNumber.GetcolorPairNumber(_pairNumber, minorSize);
+            ColorCalculationForColorFromPairNumber colorCalculationForColorFromPairNumber = new ColorCalculationForColorFromPairNumber();
+            minorSize = evaluateColor.EvaluateIsValidPairNumber(_pairNumber);
+            ColorPair colorPair = colorCalculationForColorFromPairNumber.GetcolorPairNumber(_pairNumber, minorSize);
             Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", _pairNumber, colorPair);
-            IUnitTestForColor unitTestForColor = new ColorFromPairNumberAssertion(colorPair, _pairNumber);
-            unitTestForColor.AssertionCheck();
+            return colorPair;
         }
     }
 }

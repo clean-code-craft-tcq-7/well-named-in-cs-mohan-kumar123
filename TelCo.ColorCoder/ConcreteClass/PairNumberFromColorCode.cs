@@ -7,10 +7,11 @@
         /// </summary>
         /// <param name="pair">Color pair with major and minor color</param>
         /// <returns></returns>
-        public void GetPairNumberFromColor(ColorPair pair)
+        public int GetPairNumberFromColor(ColorPair pair)
         {
             ColorProcessor colorProcessor = new ColorProcessor(pair);
-            colorProcessor.GetPairNumberFromColorProcessor();
+            int colorinfo = colorProcessor.GetPairNumberFromColorProcessor();
+            return colorinfo;
         }
     }
 }

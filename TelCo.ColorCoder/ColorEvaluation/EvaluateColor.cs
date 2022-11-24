@@ -2,9 +2,9 @@
 
 namespace TelCo.ColorCoder
 {
-    public class EvaluateColor
+    public class EvaluateColor : IEvaluateColor
     {
-        public static int EvaluateColorPairNumber(ColorPair pair, int majorIndex, int minorIndex)
+        public int EvaluateColorPairNumber(ColorPair pair, int majorIndex, int minorIndex)
         {
             int result;
             // If colors can not be found throw an exception
@@ -12,17 +12,17 @@ namespace TelCo.ColorCoder
                 throw new ArgumentException(string.Format("Unknown Colors: {0}", pair.ToString()));
 
             result = (majorIndex * ColorMap.colorMapMinor.Length) + (minorIndex + 1);
-            
+
             return result;
         }
-        public static int EvaluateIsValidPairNumber(int pairNumber)
+        public int EvaluateIsValidPairNumber(int pairNumber)
         {
             // The function supports only 1 based index. Pair numbers valid are from 1 to 25
             int minorSize = ColorMap.colorMapMinor.Length;
             int majorSize = ColorMap.colorMapMajor.Length;
             if (pairNumber < 1 || pairNumber > minorSize * majorSize)
-                 throw new ArgumentOutOfRangeException(string.Format("Argument PairNumber:{0} is outside the allowed range", pairNumber));
-            
+                throw new ArgumentOutOfRangeException(string.Format("Argument PairNumber:{0} is outside the allowed range", pairNumber));
+
             return minorSize;
         }
     }

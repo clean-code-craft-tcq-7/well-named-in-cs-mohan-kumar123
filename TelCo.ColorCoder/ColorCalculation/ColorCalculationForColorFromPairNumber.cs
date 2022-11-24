@@ -1,8 +1,8 @@
 ﻿namespace TelCo.ColorCoder
 {
-    public class ColorCalculationForColorFromPairNumber
+    public class ColorCalculationForColorFromPairNumber : IColorCalculationForColorFromPairNumber
     {
-        public static ColorPair GetcolorPairNumber(int pairNumber, int minorSize)
+        public ColorPair GetcolorPairNumber(int pairNumber, int minorSize)
         {
             // Find index of major and minor color from pair number
             int zeroBasedPairNumber = pairNumber - 1;
