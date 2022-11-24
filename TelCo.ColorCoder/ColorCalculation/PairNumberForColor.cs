@@ -1,6 +1,6 @@
 ﻿namespace TelCo.ColorCoder
 {
-    public class ColorCalculationForPairNumberFromColor : IColorCalculationForPairNumberFromColor
+    public class PairNumberForColor : IPairNumberForColor
     {
         public int GetMinorColor(ColorPair pair)
         {

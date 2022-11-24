@@ -14,18 +14,18 @@ namespace TelCo.ColorCoder
         }
         public int GetPairNumberFromColorProcessor()
         {
-            ColorCalculationForPairNumberFromColor colorCalculationForPairNumberFromColor = new ColorCalculationForPairNumberFromColor();
-            int majorIndex = colorCalculationForPairNumberFromColor.GetMajorColor(_pair);
-            int minorIndex = colorCalculationForPairNumberFromColor.GetMinorColor(_pair);
+            PairNumberForColor pairNumberColor = new PairNumberForColor();
+            int majorIndex = pairNumberColor.GetMajorColor(_pair);
+            int minorIndex = pairNumberColor.GetMinorColor(_pair);
             int result = evaluateColor.EvaluateColorPairNumber(_pair, majorIndex, minorIndex);
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}\n", _pair, result);
             return result;
         }
         public ColorPair GetColorFromPairNumberProcessor()
         {
-            ColorCalculationForColorFromPairNumber colorCalculationForColorFromPairNumber = new ColorCalculationForColorFromPairNumber();
+            ColorForPairNumber colorForPairNumber = new ColorForPairNumber();
             minorSize = evaluateColor.EvaluateIsValidPairNumber(_pairNumber);
-            ColorPair colorPair = colorCalculationForColorFromPairNumber.GetcolorPairNumber(_pairNumber, minorSize);
+            ColorPair colorPair = colorForPairNumber.GetcolorPairNumber(_pairNumber, minorSize);
             Console.WriteLine("[In]Pair Number: {0},[Out] Colors: {1}\n", _pairNumber, colorPair);
             return colorPair;
         }

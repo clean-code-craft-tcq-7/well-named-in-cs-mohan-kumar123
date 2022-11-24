@@ -1,6 +1,6 @@
 ﻿namespace TelCo.ColorCoder
 {
-    public interface IColorCalculationForPairNumberFromColor
+    public interface IPairNumberForColor
     {
         int GetMajorColor(ColorPair pair);
         int GetMinorColor(ColorPair pair);
